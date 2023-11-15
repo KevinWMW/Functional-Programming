@@ -66,7 +66,7 @@ safeTail xs | null xs = []
 
 
 
-
+ed
 
 
 
@@ -77,7 +77,7 @@ safeTail xs | null xs = []
 
 oddItems :: [Int] -> [Int]
 
-oddItems = filter (x:xs) where (x:xs) = odd
+oddItems = filter xs where xs = odd
 
 -- oddItems xs = filter isOdd xs where isOdd n = n `mod` 2 /= 0 --
 
@@ -104,9 +104,9 @@ sumThese :: [a] -> a
 
 -- sumThese xs = sum xs
 
-sumThese = foldr (+) 0
 -- sum is a library function therefore we use ' at the end to highlight that it's a different function compared to the library one.
 -- However, since I am dumb asf, I used These to denote a different function instead. 
 -- sumThese xs = foldr (+) 0 xs
 -- sumThese [] = 0
 -- sumThese (x:xs) = x + sumThese xs 
+
