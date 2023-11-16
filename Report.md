@@ -9,6 +9,10 @@ We can do this by using conditionals. Conditionals must have an else statement
 
 
 
+Designing canPlay function:
+- Check the two ends of the given domino
+- Check the two ends of the given board
+- 
 
 
 
@@ -21,4 +25,4 @@ Show: allows instances to be converted into string
 
 Todo: 
 - Analyse PlayDomsMatch code
-- 
+- Implement canPlay predicate

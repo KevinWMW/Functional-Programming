@@ -1,3 +1,4 @@
+import qualified Control.Applicative as foldr
 
 {- This is Week 2 of Haskell Programming Exercises-}
 
@@ -110,3 +111,14 @@ sumThese :: [a] -> a
 -- sumThese [] = 0
 -- sumThese (x:xs) = x + sumThese xs 
 
+
+
+-- Week five onwards (because these exercises are the only ones that matter)
+
+-- Question 40, redefine map f and filter p using foldr
+
+map' :: (a -> b) -> [a] -> [b]
+map' f (x:xs) = foldr f x xs
+
+-- This is completely wrong, the correct answer is: 
+map' f = foldr ((:).f) []

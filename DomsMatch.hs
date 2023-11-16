@@ -25,6 +25,27 @@
  -}
 
 
+--  DATATYPES 
+-- The key datatypes are provided for you in the file DomsMatch.hs. You should not change these datatypes. 
+-- These are: 
+-- • Domino – representing a domino tile. 
+-- • DominoBoard – which contains a current board state – either the initial (that is, empty) board, or the 
+-- current state, represented by: the left-most domino (with left-most pips in the first position in the 
+-- tuple), the right-most domino (with right-most pips in the second position in the tuple), and the 
+-- history of the game. 
+-- • History – the layout of the board from left at the start of the list to right at the end of the list, where 
+-- each domino is combined with which player played it and which turn at which it was played. 
+-- • Player – essentially two labels to identify the individual players. 
+-- • End – indicating the end at which a tile is placed. 
+-- • Scores – a tuple of scores representing (player 1’s score, player 2’s score) 
+-- • MoveNum – to keep track of what was played when. 
+-- • Hand – a set of dominos 
+-- • DomsPlayer – this is the type of a function. A function of this type will return the move that it will 
+-- make given the current Hand, Board, and Scores (Player is also an argument, indicating which player 
+-- this player is, which may be useful if you wish to refer to the History when deciding on your move.) 
+-- You can add extra datatypes if you wish.
+
+
  {- 
     This is Kevin's Code, hope you enjoy
  -}
@@ -173,7 +194,7 @@ module DomsMatch where
 
   scoreBoard :: Board -> Bool -> Int
   scoreBoard _ _ = 0
-  ScoreBoard board bool = 
+  ScoreBoard board bool = Scoreboard' 
 
   blocked :: Hand -> Board -> Bool
   blocked _ _ = True
@@ -184,6 +205,14 @@ module DomsMatch where
 
 
   -- Checks if the either left or right of the domino matches the end on the board
+  -- canPlay: a predicate (function that returns True or False) given a Domino, an End and a Board, returns 
+  -- True if the domino can be played at the given end of the board.
   -- canPlay :: Domino -> End -> Board -> Bool
-
+  canPlay :: Domino -> End -> Board -> Bool
+  canPlay domino end board = 
+    canPlay' domino end
+    where
+      canPlay' domino end 
+        | fst domino || snd domino == fst end || snd end = True
+        | otherwise = False
 
